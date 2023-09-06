@@ -1,0 +1,19 @@
+@import url("bootstrap/dist/css/bootstrap.min.css");
+@import url("bootstrap-icons/font/bootstrap-icons.min.css");
+
+body { 
+  font-family: 'Nunito', sans-serif;
+  background: rgb(93,92,120);
+  background: radial-gradient(circle, rgba(93,92,120,1) 0%, rgba(30,82,145,1) 100%);
+  color: white;
+}
+
+body { 
+  font-family: 'Nunito', sans-serif;
+  background: rgb(93,92,120);
+  background: radial-gradient(circle, rgba(93,92,120,1) 0%, rgba(8,44,88,1) 100%);
+}
+
+.custom-text-color {
+  color: #0b0c0d !important;
+}
