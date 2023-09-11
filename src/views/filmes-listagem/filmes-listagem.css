@@ -7,7 +7,7 @@ html, body {
 
 body { 
   font-family: 'Roboto', sans-serif;
-  background: #191717;
+  background: #0f0e0e;
 }
 
 .navbar {
@@ -17,6 +17,11 @@ body {
 
 .custom-text-color-navbar {
   background-color: #0b0b0b00 !important;
+  padding: 0.7% !important;
+}
+
+.custom-text-color-navbar {
+  background-color: #0b0b0b !important;
   padding: 0.7% !important;
 }
 
@@ -127,7 +132,7 @@ body {
 }
 
 .borda-filme-favorito {
-  border: 3px solid #191717;
+  border: 3px solid #ff0000;
 }
 
 .versao {
