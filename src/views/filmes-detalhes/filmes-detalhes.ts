@@ -1,55 +1,48 @@
 import "./filmes-detalhes.css";
-import { FilmeService } from '../../../services/filme.service'; // Substitua pelo caminho correto para o seu FilmeService
+import { FilmeService } from '../../../services/filme.service';
 
 export class DetalhesFilme {
   private filmeService: FilmeService;
 
   constructor() {
     this.filmeService = new FilmeService();
+    
+    const url = new URLSearchParams(window.location.search);
+    const idDoFilme = url.get('id') as string;
 
-    const idDoFilme = '335977'; // Substitua pelo ID do filme que você deseja buscar
+    console.log(idDoFilme);
 
-    this.filmeService.selecionarFilmePorId(idDoFilme)
-      .then((detalhesFilme) => {
-        // Preencha os elementos HTML com os dados do filme
-    const tituloElement = document.querySelector('.titulo-filme');
-    const votosElement = document.querySelector('.votos-filme');
-    const sinopseElement = document.querySelector('.sinopse-filme');
-    const lancamentoElement = document.getElementById('data-lancamento-filme');
-    const posterElement = document.querySelector('.poster-filme')
+    this.filmeService.selecionarFilmePorId(idDoFilme).then((detalhesFilme) => {
+      const tituloElement = document.querySelector('.titulo-filme');
+      const votosElement = document.querySelector('.votos-filme');
+      const sinopseElement = document.querySelector('.sinopse-filme');
+      const lancamentoElement = document.getElementById('data-lancamento-filme');
+      const posterElement = document.querySelector('.poster-filme');
 
-    if (tituloElement) {
-      tituloElement.textContent = detalhesFilme.titulo;
-    }
+      if (tituloElement) {
+        tituloElement.textContent = detalhesFilme.titulo;
+      }
 
-    if (votosElement) {
-      votosElement.textContent = `${detalhesFilme.contagemVotos} Votos`;
-    }
+      if (votosElement) {
+        votosElement.textContent = `${detalhesFilme.contagemVotos} Votos`;
+      }
 
-    if (sinopseElement) {
-      sinopseElement.textContent = detalhesFilme.sinopse;
-    }
+      if (sinopseElement) {
+        sinopseElement.textContent = detalhesFilme.sinopse;
+      }
 
-    if (lancamentoElement) {
-      lancamentoElement.textContent = detalhesFilme.dataLancamento;
-    }
+      if (lancamentoElement) {
+        lancamentoElement.textContent = detalhesFilme.dataLancamento;
+      }
 
-    if (posterElement) {
-      posterElement.setAttribute('src', detalhesFilme.urlPoster);
-    }
-
-    console.log(detalhesFilme);
-      })
-      .catch((error) => {
-        // Lide com erros, se necessário
-        console.error(error);
-      });
-      
+      if (posterElement) {
+        posterElement.setAttribute('src', detalhesFilme.urlPoster);
+      }
+    });
   }
 }
 
-window.addEventListener("load", () => new DetalhesFilme());
-
+window.addEventListener("load", () => { new DetalhesFilme(); });
 
 
 

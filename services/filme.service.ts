@@ -7,7 +7,7 @@ export class FilmeService {
 
   async selecionarFilmePorId(id: string): Promise<DetalhesFilmes> 
   {
-    const url = `https://api.themoviedb.org/3/movie/335977?language=pt-BR`;
+    const url = `https://api.themoviedb.org/3/movie/${id}?language=pt-BR`;
 
     const resultado = await fetch(url, this.obterHeadersAutorizacao()).then(res => res.json());
 
