@@ -35,7 +35,7 @@ export class DetalhesFilme {
       icone.title = 'Adicionar aos favoritos';
     }
   }
-  
+
   private async carregarDetalhesDoFilme(idDoFilme: string) {
     try {
       const detalhesFilme = await this.filmeService.selecionarFilmePorId(idDoFilme);
@@ -89,7 +89,7 @@ export class DetalhesFilme {
     const trailerElement = document.querySelector('.trailer-filme');
     
     try {
-      const trailers = await this.filmeService.selecionarTrailersFilmePorId(idDoFilme);
+      const trailers = await this.filmeService.selecionarTrailersPorId(idDoFilme);
 
       if (trailers && trailers.length > 0) {
         const primeiroTrailer = trailers[0];

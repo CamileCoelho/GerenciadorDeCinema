@@ -1,20 +1,15 @@
 @import url("bootstrap/dist/css/bootstrap.min.css");
 
-html, body {
-  margin: 0;
-  min-height: 100%;
-}
-
-body { 
+body {
   font-family: 'Roboto', sans-serif;
-  background: #0f0e0e;
+  background: #1d1c1c;
 }
 
 .navbar {
-  padding-top: 0% !important;
   background-color: #0b0b0b00 !important;
 }
 
+.custom-text-color-navbar,
 .custom-text-color-navbar {
   background-color: #0b0b0b00 !important;
   padding: 0.7% !important;
@@ -22,7 +17,6 @@ body {
 
 .custom-text-color-navbar {
   background-color: #0b0b0b !important;
-  padding: 0.7% !important;
 }
 
 .custom-text-color {
@@ -32,19 +26,18 @@ body {
 .nav {
   background-color: #121212;
   color: white;
-
   height: 45px;
   padding: 5px 15%;
 }
 
-.nav header { 
+.nav header {
   font-family: 'Segoe UI', sans-serif;
   font-size: 20px;
-  font-weight: 800; 
+  font-weight: 800;
 }
 
-.nav header a { 
-  text-decoration: none; 
+.nav header a {
+  text-decoration: none;
   background-color: #191717;
   border: 1px solid #191717;
   border-radius: 5px;
@@ -102,17 +95,9 @@ body {
   gap: 20px;
 }
 
-.posters-filmes .poster-filme {
-  cursor: pointer;
-}
-
 .posters-filmes .poster-filme img {
   width: 100%;
   border-radius: 5px;
-}
-
-.posters-filmes .poster-filme p {
-  text-align: center;
 }
 
 .posters-filmes .poster-filme:hover {

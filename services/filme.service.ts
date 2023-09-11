@@ -14,7 +14,7 @@ export class FilmeService {
     return this.mapearDetalhesFilme(resultado);
   }
 
-  async selecionarTrailersFilmePorId(id: string): Promise<any[]> 
+  async selecionarTrailersPorId(id: string): Promise<any[]> 
   {
     const url = `https://api.themoviedb.org/3/movie/${id}/videos`;
 
@@ -32,7 +32,7 @@ export class FilmeService {
     return trailersMapeados;
   }
 
-  async selecionarCreditosFilmePorId(id: string): Promise<CreditosFilme[]> 
+  async selecionarCreditosPorId(id: string): Promise<CreditosFilme[]> 
   {
     const url = `https://api.themoviedb.org/3/movie/${id}?language=pt-BR`;
 
@@ -55,7 +55,6 @@ export class FilmeService {
 
   async selecionarFilmesPorAvaliacao(): Promise<ListagemFilme[]> 
   {
-    //const url = `https://api.themoviedb.org/3/movie/top_rated?language=pt-BR&page=1`;
     const url = `https://api.themoviedb.org/3/movie/top_rated?language=pt-BR`;
 
     const resultados = await fetch(url, this.obterHeadersAutorizacao()).then(res => res.json());

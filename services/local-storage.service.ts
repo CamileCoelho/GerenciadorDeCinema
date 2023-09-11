@@ -46,16 +46,17 @@ export class LocalStorageService {
 
   public carregarFavoritosSalvos(): FilmeFavorito {
     const favoritosJSON = localStorage.getItem('favoritos');
-    if (favoritosJSON) {
+    if (favoritosJSON) 
+    {
         return JSON.parse(favoritosJSON);
-    } else {
-        return {
-            id: '',
-        };
+    } 
+    else 
+    {
+        return { id: '', };
     }
-}
+  }
 
 public salvarFavoritos(favoritos: FilmeFavorito) {
     localStorage.setItem('favoritos', JSON.stringify(favoritos));
-}
+  }
 }
