@@ -78,7 +78,7 @@ export class FilmeService {
 
   async selecionarFilmeFavorito(id: string): Promise<ListagemFilme> 
   {
-    const url = `https://api.themoviedb.org/3/discover/movie/${id}?language=pt-BR`;
+    const url = `https://api.themoviedb.org/3/movie/${id}?language=pt-BR`;
 
     const resultado = await fetch(url, this.obterHeadersAutorizacao()).then(res => res.json());
 
