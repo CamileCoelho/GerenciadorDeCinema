@@ -9,7 +9,7 @@ const localStorageService = new LocalStorageService();
 window.addEventListener('load', () => {
   selecionarFilmesFavoritos();
   selecionarFilmesPorPopularidade();
-  // selecionarFilmesPorAvaliacao();
+  selecionarFilmesPorAvaliacao();
 });
 
 

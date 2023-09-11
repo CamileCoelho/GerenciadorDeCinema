@@ -18,6 +18,7 @@ export class DetalhesFilme {
       const sinopseElement = document.querySelector('.sinopse-filme');
       const lancamentoElement = document.getElementById('data-lancamento-filme');
       const posterElement = document.querySelector('.poster-filme');
+      const trailerElement = document.querySelector('.trailer-filme');
 
       if (tituloElement) {
         tituloElement.textContent = detalhesFilme.titulo;
@@ -38,6 +39,38 @@ export class DetalhesFilme {
       if (posterElement) {
         posterElement.setAttribute('src', detalhesFilme.urlPoster);
       }
+
+      function preencherGeneros(generos: string[]) {
+        const elementosGenero = document.querySelectorAll('.genero-filme');
+        elementosGenero.forEach((elemento, index) => {
+          if (index < generos.length) {
+            elemento.textContent = generos[index];
+          }
+        });
+      }
+  
+      preencherGeneros(detalhesFilme.generos);
+      
+      if (trailerElement) {
+        this.filmeService.selecionarTrailersFilmePorId(idDoFilme)
+        .then((trailers) => {
+          if (trailers && trailers.length > 0) {
+            const primeiroTrailer = trailers[0];
+            const urlPrimeiroTrailer = primeiroTrailer.sourceUrl;
+            if (trailerElement) {
+              trailerElement.setAttribute('src', urlPrimeiroTrailer);
+            }    
+          } 
+          else 
+          {
+            console.log("Nenhum trailer encontrado para este filme.");
+          }
+        })
+        .catch((error) => {
+          // Lide com erros, se necessário
+          console.error(error);
+        });
+      }
     });
   }
 }
@@ -45,26 +78,11 @@ export class DetalhesFilme {
 window.addEventListener("load", () => { new DetalhesFilme(); });
 
 
-
-// import { FilmeService } from "../../../services/filme.service"
 // import { LocalStorageService } from "../../../services/local-storage.service";
 // import { FilmeFavorito } from "../../../models/filme-favorito";
 // import { CreditosFilme } from "../../../models/creditos-filme";
 // import { DetalhesFilmes } from "../../../models/detalhes-filme";
 // import "./filmes-detalhes.css";
-
-// // export class DetalhesFilme {
-// //   constructor() {
-// //     var filmeService = new FilmeService();
-
-// //     var teste = filmeService.selecionarFilmePorId("335977")
-// //     console.log(teste)
-// //   }
-
-// // }
-
-// // window.addEventListener("load", () => new DetalhesFilme());
-
 
 // const params = new URLSearchParams(window.location.search);
 
