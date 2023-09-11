@@ -4,20 +4,19 @@ import { DetalhesFilmes } from "../models/detalhes-filme";
 import { API_KEY } from "../secrets";
 
 export class FilmeService {
-  private locale: 'en-US' | 'pt-BR' = 'pt-BR';
 
   async selecionarFilmePorId(id: string): Promise<DetalhesFilmes> 
   {
-    const url = `https://api.themoviedb.org/3/movie/${id}?language=${this.locale}`;
+    const url = `https://api.themoviedb.org/3/movie/${id}?language=pt-BR`;
 
     const resultado = await fetch(url, this.obterHeadersAutorizacao()).then(res => res.json());
 
     return this.mapearDetalhesFilme(resultado);
   }
 
-  async selecionarTrailersFilmePorId(id: string): Promise<any[]> 
+  async selecionarTrailersPorId(id: string): Promise<any[]> 
   {
-    const url = `https://api.themoviedb.org/3/movie/${id}/videos?language=${this.locale}`;
+    const url = `https://api.themoviedb.org/3/movie/${id}/videos`;
 
     const resultado = await fetch(url, this.obterHeadersAutorizacao()).then(res => res.json());
 
@@ -33,9 +32,9 @@ export class FilmeService {
     return trailersMapeados;
   }
 
-  async selecionarCreditosFilmePorId(id: string): Promise<CreditosFilme[]> 
+  async selecionarCreditosPorId(id: string): Promise<CreditosFilme[]> 
   {
-    const url = `https://api.themoviedb.org/3/movie/${id}/credits?language=${this.locale}`;
+    const url = `https://api.themoviedb.org/3/movie/${id}?language=pt-BR`;
 
     const resultado = await fetch(url, this.obterHeadersAutorizacao()).then(res => res.json());
 
@@ -56,7 +55,7 @@ export class FilmeService {
 
   async selecionarFilmesPorAvaliacao(): Promise<ListagemFilme[]> 
   {
-    const url = `https://api.themoviedb.org/3/movie/top_rated?language=${this.locale}&page=1`;
+    const url = `https://api.themoviedb.org/3/movie/top_rated?language=pt-BR`;
 
     const resultados = await fetch(url, this.obterHeadersAutorizacao()).then(res => res.json());
 
@@ -67,7 +66,7 @@ export class FilmeService {
 
   async selecionarFilmesPopulares(): Promise<ListagemFilme[]> 
   {
-    const url = `https://api.themoviedb.org/3/movie/popular?language=${this.locale}&page=1`;
+    const url = `https://api.themoviedb.org/3/movie/popular?language=pt-BR`;
 
     const resultados = await fetch(url, this.obterHeadersAutorizacao()).then(res => res.json());
 
@@ -78,7 +77,7 @@ export class FilmeService {
 
   async selecionarFilmeFavorito(id: string): Promise<ListagemFilme> 
   {
-    const url = `https://api.themoviedb.org/3/movie/${id}?language=${this.locale}`;
+    const url = `https://api.themoviedb.org/3/movie/${id}?language=pt-BR`;
 
     const resultado = await fetch(url, this.obterHeadersAutorizacao()).then(res => res.json());
 
@@ -94,7 +93,7 @@ export class FilmeService {
       urlTrailer: `https://api.themoviedb.org/3/movie/${obj.id}/videos`,
       mediaNota: obj.vote_average,
       contagemVotos: obj.vote_count,
-      dataLancamento: obj.release_date.slice(0, 4),
+      dataLancamento: obj.release_date,
       sinopse: obj.overview,
       generos: obj.genres?.map((g: any) => g.name as string)
     }
@@ -106,7 +105,7 @@ export class FilmeService {
       id: obj.id,
       titulo: obj.title,
       sinopse: obj.sinopse,
-      caminho_poster: `'https://image.tmdb.org/t/p/original/' + ${obj.poster_path}`,
+      caminho_poster: 'https://image.tmdb.org/t/p/original/' + obj.poster_path,
       media_nota: obj.vote_average,
       data_lancamento: obj.release_date
     }

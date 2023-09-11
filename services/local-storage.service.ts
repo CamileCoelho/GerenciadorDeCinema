@@ -43,4 +43,20 @@ export class LocalStorageService {
     const favoritosJsonString = JSON.stringify(this.favoritos);
     this.localStorage.setItem("gerenciador-sistemas:favoritos", favoritosJsonString);
   }
+
+  public carregarFavoritosSalvos(): FilmeFavorito {
+    const favoritosJSON = localStorage.getItem('favoritos');
+    if (favoritosJSON) 
+    {
+        return JSON.parse(favoritosJSON);
+    } 
+    else 
+    {
+        return { id: '', };
+    }
+  }
+
+public salvarFavoritos(favoritos: FilmeFavorito) {
+    localStorage.setItem('favoritos', JSON.stringify(favoritos));
+  }
 }
